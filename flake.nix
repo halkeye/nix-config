@@ -12,8 +12,13 @@
   inputs.nixos-wsl.url = "github:nix-community/NixOS-WSL";
   inputs.nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.nix-ld.url = "github:Mic92/nix-ld";
+  inputs.nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.nix-index-database.url = "github:Mic92/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+  inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
 
   outputs = inputs:
     with inputs; let
@@ -79,6 +84,8 @@
         username = "halkeye";
         modules = [
           nixos-wsl.nixosModules.wsl
+          nix-ld.nixosModules.nix-ld
+	  vscode-server.nixosModules.default
           ./wsl.nix
         ];
       };
