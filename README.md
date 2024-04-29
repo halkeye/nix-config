@@ -136,3 +136,14 @@ this project uses a flat layout without any nesting or modularization.
     * NixOS options are set here
 * `home.nix` is where packages, dotfiles, terminal tools, environment variables
   and aliases are configured
+
+
+## Post install steps
+
+* https://www.richtman.au/blog/configuring-wsl2-nixos-for-vscode-remote-development/
+
+sudo nixos-rebuild switch
+systemctl --user enable auto-fix-vscode-server.service
+# Ignore the warning
+systemctl --user start auto-fix-vscode-server.service
+

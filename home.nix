@@ -5,6 +5,7 @@
   pkgs,
   username,
   nix-index-database,
+  lib,
   ...
 }: let
   unstable-packages = with pkgs.unstable; [
@@ -38,6 +39,8 @@
 
     # key tools
     just
+    lsd
+    vivid
 
     # core languages
     rustup
@@ -294,6 +297,7 @@ in {
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
+	curl = "noglob curl --compressed --proto-default https";
       };
 
       envExtra = ''
@@ -301,6 +305,8 @@ in {
       '';
 
       initExtra = ''
+	ulimit -S -c 0 # disable core dumps
+
         bindkey '^p' history-search-backward
         bindkey '^n' history-search-forward
         bindkey '^e' end-of-line
@@ -345,40 +351,12 @@ in {
         zstyle ':completion:*' squeeze-slashes true
         zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-        # mkcd is equivalent to takedir
-        function mkcd takedir() {
-          mkdir -p $@ && cd ''${@:$#}
-        }
-
-        function takeurl() {
-          local data thedir
-          data="$(mktemp)"
-          curl -L "$1" > "$data"
-          tar xf "$data"
-          thedir="$(tar tf "$data" | head -n 1)"
-          rm "$data"
-          cd "$thedir"
-        }
-
-        function takegit() {
-          git clone "$1"
-          cd "$(basename ''${1%%.git})"
-        }
-
-        function take() {
-          if [[ $1 =~ ^(https?|ftp).*\.(tar\.(gz|bz2|xz)|tgz)$ ]]; then
-            takeurl "$1"
-          elif [[ $1 =~ ^([A-Za-z0-9]\+@|https?|git|ssh|ftps?|rsync).*\.git/?$ ]]; then
-            takegit "$1"
-          else
-            takedir "$@"
-          fi
-        }
-
         WORDCHARS='*?[]~=&;!#$%^(){}<>'
 
         # fixes duplication of commands when using tab-completion
         export LANG=C.UTF-8
+
+        ${builtins.readFile ./zsh/setup.zsh}
       '';
     };
   };
