@@ -37,7 +37,6 @@
     # FIXME: customize these stable packages to your liking for the languages that you use
 
     # key tools
-    gh # for bootstrapping
     just
 
     # core languages
@@ -117,14 +116,21 @@
     # Scans and monitors projects for security vulnerabilities
     snyk
 
+
+    ### 
+    # Kubernetes Tools
+    ###
+
     # Kubernetes CLI To Manage Your Clusters In Style
     k9s
-
     # Fast way to switch between clusters and namespaces in kubectl!
     kubectx
 
-    # The kubectx for operators
     kubeswitch
+    # Bash script to tail Kubernetes logs from multiple pods at the same time
+    kubetail
+    # Multi pod and container log tailing for Kubernetes
+    stern
 
     # Shell script analysis tool
     shellcheck
@@ -137,6 +143,7 @@
 
     # Text-mode interface for git
     tig
+
   ];
 in {
   imports = [
