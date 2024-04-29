@@ -3,7 +3,7 @@ name: 'build'
 on:
   push:
     branches: 
-      - master
+      - $default-branch
       - feature/*
       - hotfix/*
   pull_request: {}
