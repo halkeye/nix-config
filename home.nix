@@ -16,18 +16,15 @@
     du-dust
     fd
     findutils
-    fx
     git
-    git-crypt
     htop
     jq
     killall
     lunarvim
-    mosh
-    neovim
     procs
     ripgrep
     sd
+    silver-searcher
     tmux
     tree
     unzip
@@ -85,6 +82,61 @@
     statix # nix
     sqlfluff
     tflint
+
+    #nerdfonts
+    #(nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" "CascadiaMono" ]; })
+
+    hyfetch
+
+    neovim
+
+    # Modern encryption tool with small explicit keys
+    age
+
+    # Terminal JSON viewer
+    fx
+
+    # A tool for exploring each layer in a docker image
+    dive
+
+    # A modern, maintained replacement for ls
+    eza
+
+    # A command line tool for DigitalOcean services
+    doctl
+
+    # A package manager for kubernetes
+    kubernetes-helm
+
+    # Kubernetes CLI
+    kubectl
+
+    # Shell independent context and namespace switcher for kubectl
+    kubie
+
+    # Scans and monitors projects for security vulnerabilities
+    snyk
+
+    # Kubernetes CLI To Manage Your Clusters In Style
+    k9s
+
+    # Fast way to switch between clusters and namespaces in kubectl!
+    kubectx
+
+    # The kubectx for operators
+    kubeswitch
+
+    # Shell script analysis tool
+    shellcheck
+
+    # Dockerfile Linter JavaScript API
+    hadolint
+
+    # GitHub CLI tool
+    gh
+
+    # Text-mode interface for git
+    tig
   ];
 in {
   imports = [
@@ -160,8 +212,11 @@ in {
         side-by-side = true;
         navigate = true;
       };
-      userEmail = ""; # FIXME: set your git email
-      userName = ""; #FIXME: set your git username
+      aliases = {
+        root = "rev-parse --show-toplevel";
+      };
+      userEmail = "git@gavinmogan.com";
+      userName = "Gavin Mogan";
       extraConfig = {
         # FIXME: uncomment the next lines if you want to be able to clone private https repos
         # url = {
@@ -172,6 +227,11 @@ in {
         #     insteadOf = "https://gitlab.com";
         #   };
         # };
+        url = {
+          "git@github.com:" = {
+            insteadOf = https://github.com/;
+          };
+        };
         push = {
           default = "current";
           autoSetupRemote = true;
@@ -223,18 +283,6 @@ in {
         gc = "nix-collect-garbage --delete-old";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         show_path = "echo $PATH | tr ':' '\n'";
-
-        # FIXME: add more git aliases here if you want them
-        gapa = "git add --patch";
-        grpa = "git reset --patch";
-        gst = "git status";
-        gdh = "git diff HEAD";
-        gp = "git push";
-        gph = "git push -u origin HEAD";
-        gco = "git checkout";
-        gcob = "git checkout -b";
-        gcm = "git checkout master";
-        gcd = "git checkout develop";
 
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";

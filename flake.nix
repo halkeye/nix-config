@@ -74,9 +74,9 @@
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      nixosConfigurations.nixos = mkNixosConfiguration {
-        hostname = "nixos";
-        username = "nixos"; # FIXME: replace with your own username!
+      nixosConfigurations.loki = mkNixosConfiguration {
+        hostname = "loki";
+        username = "halkeye";
         modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
