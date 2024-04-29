@@ -61,6 +61,10 @@
     # treesitter
     tree-sitter
 
+    # docker stuff
+    regctl # Docker and OCI Registry Client in Go and tooling using those libraries
+    reg # Docker registry v2 command line client and repo listing generator with security checks
+
     # language servers
     ccls # c / c++
     gopls
@@ -144,6 +148,8 @@
     # Text-mode interface for git
     tig
 
+    # wsl stuff
+    wsl-open # Open files with xdg-open from Windows Subsystem for Linux (WSL) in Windows applications
   ];
 in {
   imports = [
@@ -295,6 +301,7 @@ in {
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
 	curl = "noglob curl --compressed --proto-default https";
+	xdg-open = "wsl-open";
       };
 
       envExtra = ''
