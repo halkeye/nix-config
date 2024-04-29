@@ -101,9 +101,6 @@
     # A tool for exploring each layer in a docker image
     dive
 
-    # A modern, maintained replacement for ls
-    eza
-
     # A command line tool for DigitalOcean services
     doctl
 
