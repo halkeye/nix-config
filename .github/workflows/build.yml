@@ -4,6 +4,7 @@ on:
   push:
     branches: 
       - $default-branch
+      - main
       - feature/*
       - hotfix/*
   pull_request: {}
