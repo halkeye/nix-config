@@ -30,7 +30,7 @@ jobs:
           sudo $nix_bin run .#nixosConfigurations.nixos.config.system.build.tarballBuilder
 
       - name: Upload tarball
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
           name: nixos-wsl-starter
           path: nixos-wsl.tar.gz
