@@ -79,13 +79,25 @@
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
+      # github actions
+      nixosConfigurations.nixos = mkNixosConfiguration {
+        hostname = "nixos";
+        username = "nix";
+        modules = [
+          nixos-wsl.nixosModules.wsl
+          nix-ld.nixosModules.nix-ld
+          vscode-server.nixosModules.default
+          ./wsl.nix
+        ];
+      };
+
       nixosConfigurations.loki = mkNixosConfiguration {
         hostname = "loki";
         username = "halkeye";
         modules = [
           nixos-wsl.nixosModules.wsl
           nix-ld.nixosModules.nix-ld
-	  vscode-server.nixosModules.default
+          vscode-server.nixosModules.default
           ./wsl.nix
         ];
       };
