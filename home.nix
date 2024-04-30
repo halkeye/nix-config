@@ -8,6 +8,8 @@
   lib,
   ...
 }: let
+  vimsettings = import ./vim.nix;
+
   unstable-packages = with pkgs.unstable; [
     # FIXME: select your core binaries that you always want on the bleeding-edge
     bat
@@ -41,6 +43,8 @@
     just
     lsd
     vivid
+    fzy # A better fuzzy finder
+    gron # Make JSON greppable!
 
     # core languages
     rustup
@@ -159,7 +163,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    sessionVariables.EDITOR = "lvim";
+    sessionVariables.EDITOR = "nvim";
     # FIXME: set your preferred $SHELL
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
@@ -174,14 +178,19 @@ in {
       # pkgs.unstable.some-other-package
     ];
 
-  # FIXME: if you want to version your LunarVim config, add it to the root of this repo and uncomment the next line
-  # home.file.".config/lvim/config.lua".source = ./lvim_config.lua;
+  services = {
+    gpg-agent.enable = true;
+    gpg-agent.enableExtraSocket = withGUI;
+    gpg-agent.enableSshSupport = true;
+  };
 
   programs = {
     home-manager.enable = true;
     nix-index.enable = true;
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
+
+    jq.enable = true;
 
     # FIXME: disable this if you don't want to use the starship prompt
     starship.enable = true;
@@ -212,6 +221,21 @@ in {
     direnv.enable = true;
     direnv.enableZshIntegration = true;
     direnv.nix-direnv.enable = true;
+
+    neovim = vimsettings pkgs;
+
+    ssh = {
+      enable = true;
+      forwardAgent = true;
+      extraConfig = ''
+        Include ~/.ssh/config.d/*
+
+        Host *
+          ForwardAgent yes
+          GSSAPIAuthentication no
+          RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
+      '';
+    };
 
     git = {
       enable = true;
