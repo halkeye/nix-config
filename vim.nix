@@ -6,13 +6,11 @@ pkgs:
   vimdiffAlias = true;
   defaultEditor = true;
   plugins = with pkgs.vimPlugins; [
-    #coc-nvim
     editorconfig-vim
     fzf-vim
     fzfWrapper
     LanguageClient-neovim
     lightline-vim
-    nerdtree
     supertab
     tabular
     vim-better-whitespace
@@ -21,7 +19,6 @@ pkgs:
 
     # :AG
     ag-nvim # rking/ag.vim
-
 
     # COC
     coc-nvim
@@ -32,16 +29,7 @@ pkgs:
     wombat256
     papercolor-theme
 
-    # language packages
-    vim-hcl
-
-    # Nix
-    vim-nix
-
-    # sql
-    #sqlite-lua
-
-    vim-polyglot
+    { plugin = vim-polyglot; config = ''let g:polyglot_disabled = ['md', 'markdown']''; }
 
     vim-commentary # commentary.vim: comment stuff out
     vim-eunuch # :Remove, :Rename, etc
@@ -96,8 +84,6 @@ pkgs:
   ];
 
   extraConfig = ''
-    let g:polyglot_disabled = ['md', 'markdown']
-
     set background=light
     set background=dark
 
