@@ -30,6 +30,8 @@ pkgs:
     papercolor-theme
 
     { plugin = vim-polyglot; config = ''let g:polyglot_disabled = ['md', 'markdown']''; }
+    vim-go
+    vim-nix
 
     vim-commentary # commentary.vim: comment stuff out
     vim-eunuch # :Remove, :Rename, etc

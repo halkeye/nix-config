@@ -43,6 +43,7 @@
     vivid
     fzy # A better fuzzy finder
     gron # Make JSON greppable!
+    ctags
 
     # core languages
     rustup
