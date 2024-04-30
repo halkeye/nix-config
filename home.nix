@@ -23,7 +23,6 @@
     htop
     jq
     killall
-    lunarvim
     procs
     ripgrep
     sd
@@ -31,7 +30,6 @@
     tmux
     tree
     unzip
-    vim
     wget
     zip
   ];
@@ -97,8 +95,6 @@
     #(nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" "CascadiaMono" ]; })
 
     hyfetch
-
-    neovim
 
     # Modern encryption tool with small explicit keys
     age
@@ -180,7 +176,7 @@ in {
 
   services = {
     gpg-agent.enable = true;
-    gpg-agent.enableExtraSocket = withGUI;
+    # gpg-agent.enableExtraSocket = withGUI;
     gpg-agent.enableSshSupport = true;
   };
 
@@ -190,7 +186,10 @@ in {
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
 
-    jq.enable = true;
+    jq = {
+      enable = true;
+      package = pkgs.unstable.jq;
+    };
 
     # FIXME: disable this if you don't want to use the starship prompt
     starship.enable = true;

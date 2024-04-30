@@ -3,6 +3,8 @@ pkgs:
   enable = true;
   viAlias = true;
   vimAlias = true;
+  vimdiffAlias = true;
+  defaultEditor = true;
   plugins = with pkgs.vimPlugins; [
     #coc-nvim
     editorconfig-vim
@@ -47,6 +49,48 @@ pkgs:
     vim-trailing-whitespace
   ];
 
+  coc = {
+    enable = true;
+    settings = ''
+      {
+        "languageserver": {
+          "go": {
+            "command": "gopls",
+            "rootPatterns": [
+              "go.mod"
+            ],
+            "trace.server": "verbose",
+            "filetypes": [
+              "go"
+            ]
+          }
+        },
+        "go.goplsOptions": {
+          "local": "do/"
+        },
+        "eslint.autoFixOnSave": true,
+        "eslint.format.enable": true,
+        "solargraph.diagnostics": true,
+        "solargraph.autoformat": true,
+        "solargraph.formatting": true,
+        "coc.preferences.formatOnSaveFiletypes": [
+          "c",
+          "go",
+          "ruby",
+          "python"
+        ],
+        "list.normalMappings": {
+          "<C-c>": "do:exit"
+        },
+        "list.insertMappings": {
+          "<C-c>": "do:exit"
+        },
+        "typescript.format.semicolons": "insert",
+        "svelte.enable-ts-plugin": false
+      }
+    '';
+  };
+
   extraPackages = with pkgs; [
     rust-analyzer
   ];
@@ -78,7 +122,6 @@ pkgs:
 
     let g:better_whitespace_enabled=1
     let g:strip_whitespace_on_save=0
-    let mapleader=' '
 
     let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
@@ -89,6 +132,12 @@ pkgs:
         inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
       endif
     endif
+
+    " ctrl+p triggering fzf pls
+    nmap <C-P> :FZF<CR>
+    let g:fzf_action = {
+      \ 'return': 'tabedit',
+      \ }
 
     """ Tab stuff
     " Tab configuration
@@ -145,10 +194,10 @@ pkgs:
     let g:go_fmt_command = "gopls"
 
     let g:go_build_tags = 'integration'
-    
+
     " automatically highlight variable your cursor is on
     let g:go_auto_sameids = 0
-    
+
     let g:go_highlight_types = 1
     let g:go_highlight_fields = 1
     let g:go_highlight_functions = 1

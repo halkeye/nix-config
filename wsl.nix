@@ -15,7 +15,7 @@
 
   systemd.tmpfiles.rules = [
     "d /home/${username}/.config 0755 ${username} users"
-    "d /home/${username}/.config/lvim 0755 ${username} users"
+    "d /home/${username}/.config/nvim 0755 ${username} users"
   ];
 
   # FIXME: change your shell here if you don't want zsh
