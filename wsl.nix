@@ -49,6 +49,8 @@
 
   environment.systemPackages = [
     (import ./win32yank.nix {inherit pkgs;})
+    # wsl stuff
+    pkgs.wsl-open # Open files with xdg-open from Windows Subsystem for Linux (WSL) in Windows applications
   ];
 
   home-manager.users.${username} = {

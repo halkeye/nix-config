@@ -147,9 +147,6 @@
 
     # Text-mode interface for git
     tig
-
-    # wsl stuff
-    wsl-open # Open files with xdg-open from Windows Subsystem for Linux (WSL) in Windows applications
   ];
 in {
   imports = [
