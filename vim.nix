@@ -50,8 +50,10 @@ in
 
     vim-trailing-whitespace
 
-    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
-    (fromGitHub "b8e7ce60ed4a1c74a4bf25bda6d3614dac5f90ad" "main" "tekumara/typos-lsp")
+    nvim-lspconfig
+
+#    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
+    (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "v0.1.17" "tekumara/typos-lsp")
   ];
 
   coc = {
@@ -96,6 +98,9 @@ in
     '';
   };
 
+  extraLuaConfig = ''
+    require('lspconfig').typos_lsp.setup({})
+  '';
   extraPackages = with pkgs; [
     rust-analyzer
   ];

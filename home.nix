@@ -42,6 +42,7 @@
     fzy # A better fuzzy finder
     gron # Make JSON greppable!
     ctags
+    typos
 
     # core languages
     rustup
