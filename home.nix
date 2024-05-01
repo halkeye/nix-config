@@ -8,8 +8,6 @@
   lib,
   ...
 }: let
-  vimsettings = import ./vim.nix;
-
   unstable-packages = with pkgs.unstable; [
     # FIXME: select your core binaries that you always want on the bleeding-edge
     bat
@@ -222,7 +220,9 @@ in {
     direnv.enableZshIntegration = true;
     direnv.nix-direnv.enable = true;
 
-    neovim = vimsettings pkgs;
+    neovim = import ./vim.nix {
+      inherit pkgs lib;
+    };
 
     ssh = {
       enable = true;

@@ -1,4 +1,16 @@
-pkgs:
+{ pkgs, lib, ... }:
+
+let
+  fromGitHub = rev: ref: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+      rev = rev;
+    };
+  };
+in
 {
   enable = true;
   viAlias = true;
@@ -37,6 +49,9 @@ pkgs:
     vim-eunuch # :Remove, :Rename, etc
 
     vim-trailing-whitespace
+
+    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
+    (fromGitHub "b8e7ce60ed4a1c74a4bf25bda6d3614dac5f90ad" "main" "tekumara/typos-lsp")
   ];
 
   coc = {
