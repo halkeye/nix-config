@@ -164,6 +164,10 @@ in {
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
+  home.file = {
+    Downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/micro/Downloads/";
+  };
+
   home.packages =
     stable-packages
     ++ unstable-packages
