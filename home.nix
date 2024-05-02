@@ -168,9 +168,9 @@ in {
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
-  home.file = {
-    Downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/micro/Downloads/";
-  };
+  home.file = lib.mkMerge [
+    (lib.mkIf (builtins.pathExists "/mnt/c/Users/micro/Downloads/") { Downloads = { source = config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/micro/Downloads/"; }; } )
+  ];
 
   home.packages =
     stable-packages
