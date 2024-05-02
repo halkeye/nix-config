@@ -27,6 +27,7 @@
     silver-searcher
     tmux
     tree
+    typos-lsp
     unzip
     wget
     zip
@@ -43,6 +44,9 @@
     gron # Make JSON greppable!
     ctags
     typos
+
+    wslu
+    wsl-open
 
     # core languages
     rustup
@@ -331,8 +335,8 @@ in {
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
-	curl = "noglob curl --compressed --proto-default https";
-	xdg-open = "wsl-open";
+        curl = "noglob curl --compressed --proto-default https";
+        xdg-open = "wsl-open";
       };
 
       envExtra = ''

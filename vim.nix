@@ -53,7 +53,7 @@ in
     nvim-lspconfig
 
 #    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
-    (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "v0.1.17" "tekumara/typos-lsp")
+    #(fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "v0.1.17" "tekumara/typos-lsp")
   ];
 
   coc = {
