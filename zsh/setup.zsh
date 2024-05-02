@@ -1,9 +1,27 @@
+# up/down to search back the zsh history
+autoload -U history-search-end
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+bindkey "$key[Up]" history-beginning-search-backward-end
+bindkey "$key[Down]" history-beginning-search-forward-end
+
 if [[ -n ${commands[lsd]} ]]; then
   if [ -n "${commands[vivid]}" ]; then
     export LS_COLORS="$(vivid generate molokai)"
   fi
   alias lsd="lsd --classify --date=relative"
 fi
+
+## From: https://unix.stackexchange.com/questions/258656/how-can-i-delete-to-a-slash-or-a-word-in-zsh
+# This way you can use ctrl+w for deleting a Word (in vim lingo) and alt+bkspc to delete a word
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
 
 # mkcd is equivalent to takedir
 function mkcd takedir() {

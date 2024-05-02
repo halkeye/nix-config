@@ -121,7 +121,7 @@
     snyk
 
 
-    ### 
+    ###
     # Kubernetes Tools
     ###
 

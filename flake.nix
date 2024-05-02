@@ -101,5 +101,16 @@
           ./wsl.nix
         ];
       };
+
+      nixosConfigurations.antman = mkNixosConfiguration {
+        hostname = "antman";
+        username = "halkeye";
+        modules = [
+          nixos-wsl.nixosModules.wsl
+          nix-ld.nixosModules.nix-ld
+          vscode-server.nixosModules.default
+          ./wsl.nix
+        ];
+      };
     };
 }
