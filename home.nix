@@ -191,8 +191,13 @@ in {
       package = pkgs.unstable.jq;
     };
 
+    oh-my-posh = {
+      enable = true;
+      useTheme = "gmay";
+    };
+
     # FIXME: disable this if you don't want to use the starship prompt
-    starship.enable = true;
+    starship.enable = false;
     starship.settings = {
       aws.disabled = true;
       gcloud.disabled = true;
