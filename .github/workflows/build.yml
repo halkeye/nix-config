@@ -34,7 +34,7 @@ jobs:
       - name: Build tarball
         run: |
           nix_bin=$(which nix)
-          sudo $nix_bin run .#nixosConfigurations.nixos.config.system.build.tarballBuilder
+          sudo $nix_bin run github:nix-community/NixOS-WSL#nixosConfigurations.modern.config.system.build.tarballBuilder
 
       - name: Upload tarball
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
