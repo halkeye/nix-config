@@ -27,6 +27,7 @@
     silver-searcher
     tmux
     tree
+    typos-lsp
     unzip
     wget
     zip

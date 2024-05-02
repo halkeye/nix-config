@@ -36,10 +36,12 @@ in
     coc-nvim
     coc-fzf
     coc-tailwindcss
+    trouble-nvim
 
     # themes
     wombat256
     papercolor-theme
+    nvim-web-devicons
 
     { plugin = vim-polyglot; config = ''let g:polyglot_disabled = ['md', 'markdown']''; }
     vim-go
@@ -50,53 +52,54 @@ in
 
     vim-trailing-whitespace
 
-    nvim-lspconfig
+#    lspconfig doesn't have typos support, so pull from git
+#    nvim-lspconfig
+    (fromGitHub "aa5f4f4ee10b2688fb37fa46215672441d5cd5d9" "master" "neovim/nvim-lspconfig")
 
-#    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
     (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "v0.1.17" "tekumara/typos-lsp")
   ];
 
-  coc = {
-    enable = true;
-    settings = ''
-      {
-        "languageserver": {
-          "go": {
-            "command": "gopls",
-            "rootPatterns": [
-              "go.mod"
-            ],
-            "trace.server": "verbose",
-            "filetypes": [
-              "go"
-            ]
-          }
-        },
-        "go.goplsOptions": {
-          "local": "do/"
-        },
-        "eslint.autoFixOnSave": true,
-        "eslint.format.enable": true,
-        "solargraph.diagnostics": true,
-        "solargraph.autoformat": true,
-        "solargraph.formatting": true,
-        "coc.preferences.formatOnSaveFiletypes": [
-          "c",
-          "go",
-          "ruby",
-          "python"
-        ],
-        "list.normalMappings": {
-          "<C-c>": "do:exit"
-        },
-        "list.insertMappings": {
-          "<C-c>": "do:exit"
-        },
-        "typescript.format.semicolons": "insert",
-        "svelte.enable-ts-plugin": false
-      }
-    '';
-  };
+  # coc = {
+  #   enable = true;
+  #   settings = ''
+  #     {
+  #       "languageserver": {
+  #         "go": {
+  #           "command": "gopls",
+  #           "rootPatterns": [
+  #             "go.mod"
+  #           ],
+  #           "trace.server": "verbose",
+  #           "filetypes": [
+  #             "go"
+  #           ]
+  #         }
+  #       },
+  #       "go.goplsOptions": {
+  #         "local": "do/"
+  #       },
+  #       "eslint.autoFixOnSave": true,
+  #       "eslint.format.enable": true,
+  #       "solargraph.diagnostics": true,
+  #       "solargraph.autoformat": true,
+  #       "solargraph.formatting": true,
+  #       "coc.preferences.formatOnSaveFiletypes": [
+  #         "c",
+  #         "go",
+  #         "ruby",
+  #         "python"
+  #       ],
+  #       "list.normalMappings": {
+  #         "<C-c>": "do:exit"
+  #       },
+  #       "list.insertMappings": {
+  #         "<C-c>": "do:exit"
+  #       },
+  #       "typescript.format.semicolons": "insert",
+  #       "svelte.enable-ts-plugin": false
+  #     }
+  #   '';
+  # };
 
   extraLuaConfig = ''
     require('lspconfig').typos_lsp.setup({})
