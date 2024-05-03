@@ -82,7 +82,7 @@
       # github actions
       nixosConfigurations.nixos = mkNixosConfiguration {
         hostname = "nixos";
-        username = "nix";
+        username = "nixos";
         modules = [
           nixos-wsl.nixosModules.default
           nix-ld.nixosModules.nix-ld
