@@ -2,16 +2,30 @@
   # FIXME: uncomment the next line if you want to reference your GitHub/GitLab access tokens and other secrets
   # secrets,
   username,
-  hostname,
+  # hostname,
   pkgs,
   inputs,
   ...
 }: {
+  system.stateVersion = "23.11";
+
+  wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    wslConf.interop.appendWindowsPath = false;
+    wslConf.network.generateHosts = false;
+    defaultUser = username;
+    startMenuLaunchers = true;
+
+    # Enable integration with Docker Desktop (needs to be installed)
+    docker-desktop.enable = false;
+  };
+
   time.timeZone = "America/Vancouver";
 
   services.vscode-server.enable = true;
 
-  networking.hostName = "${hostname}";
+  # networking.hostName = "${hostname}";
 
   systemd.tmpfiles.rules = [
     "d /home/${username}/.config 0755 ${username} users"
@@ -36,8 +50,7 @@
     shell = pkgs.zsh;
     extraGroups = [
       "wheel"
-      # FIXME: uncomment the next line if you want to run docker without sudo
-      # "docker"
+      "docker"
     ];
     # FIXME: add your own hashed password
     # hashedPassword = "";
@@ -57,20 +70,6 @@
     imports = [
       ./home.nix
     ];
-  };
-
-  system.stateVersion = "22.05";
-
-  wsl = {
-    enable = true;
-    wslConf.automount.root = "/mnt";
-    wslConf.interop.appendWindowsPath = false;
-    wslConf.network.generateHosts = false;
-    defaultUser = username;
-    startMenuLaunchers = true;
-
-    # Enable integration with Docker Desktop (needs to be installed)
-    docker-desktop.enable = false;
   };
 
   virtualisation.docker = {

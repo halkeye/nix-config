@@ -1,12 +1,3 @@
-# up/down to search back the zsh history
-autoload -U history-search-end
-
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-
-bindkey "$key[Up]" history-beginning-search-backward-end
-bindkey "$key[Down]" history-beginning-search-forward-end
-
 if [[ -n ${commands[lsd]} ]]; then
   if [ -n "${commands[vivid]}" ]; then
     export LS_COLORS="$(vivid generate molokai)"

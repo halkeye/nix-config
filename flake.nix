@@ -84,7 +84,7 @@
         hostname = "nixos";
         username = "nix";
         modules = [
-          nixos-wsl.nixosModules.wsl
+          nixos-wsl.nixosModules.default
           nix-ld.nixosModules.nix-ld
           vscode-server.nixosModules.default
           ./wsl.nix
@@ -95,7 +95,7 @@
         hostname = "loki";
         username = "halkeye";
         modules = [
-          nixos-wsl.nixosModules.wsl
+          nixos-wsl.nixosModules.default
           nix-ld.nixosModules.nix-ld
           vscode-server.nixosModules.default
           ./wsl.nix
@@ -106,7 +106,7 @@
         hostname = "antman";
         username = "halkeye";
         modules = [
-          nixos-wsl.nixosModules.wsl
+          nixos-wsl.nixosModules.default
           nix-ld.nixosModules.nix-ld
           vscode-server.nixosModules.default
           ./wsl.nix
