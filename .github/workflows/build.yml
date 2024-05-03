@@ -39,4 +39,5 @@ jobs:
       - name: Upload tarball
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
+          name: nixos-wsl.tar.gz
           path: nixos-wsl.tar.gz
