@@ -27,10 +27,14 @@
     silver-searcher
     tmux
     tree
-    typos-lsp
     unzip
     wget
     zip
+
+    typos-lsp
+    ruby-lsp
+
+    devenv
   ];
 
   stable-packages = with pkgs; [
@@ -60,7 +64,7 @@
     cargo-cache
     cargo-expand
 
-    # local dev stuf
+    # local dev stuff
     mkcert
     httpie
 

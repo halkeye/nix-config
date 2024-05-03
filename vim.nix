@@ -35,11 +35,6 @@ in
     # :AG
     ag-nvim # rking/ag.vim
 
-    # COC
-    coc-nvim
-    coc-fzf
-    coc-tailwindcss
-    trouble-nvim
 
     # themes
     wombat256
@@ -54,6 +49,12 @@ in
 #    lspconfig doesn't have typos support, so pull from git
 #    nvim-lspconfig
     (fromGitHub "aa5f4f4ee10b2688fb37fa46215672441d5cd5d9" "master" "neovim/nvim-lspconfig")
+
+    # Coding UI
+    fzf-lsp-nvim
+    trouble-nvim
+    lightline-lsp
+    lsp-format-nvim
 
     # Completion
     nvim-cmp
@@ -70,6 +71,7 @@ in
     typescript-tools-nvim
     vim-go
     vim-nix
+    vim-ruby
     (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "main" "tekumara/typos-lsp")
 #    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
   ];
@@ -117,7 +119,11 @@ in
   # };
 
   extraLuaConfig = ''
-    require('lspconfig').typos_lsp.setup({})
+    require'lspconfig'.typos_lsp.setup{}
+    require'lspconfig'.marksman.setup{}
+    require'lspconfig'.ruby_lsp.setup{}
+    require'lspconfig'.gopls.setup{}
+    require'lspconfig'.nixd.setup{}
   '';
   extraPackages = with pkgs; [
     rust-analyzer

@@ -18,6 +18,9 @@
   inputs.nix-index-database.url = "github:Mic92/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.nixd.url = "github:nix-community/nixd";
+  inputs.nixd.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
 
   outputs = inputs:
