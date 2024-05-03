@@ -19,6 +19,7 @@ in
   vimdiffAlias = true;
   defaultEditor = true;
   plugins = with pkgs.vimPlugins; [
+    nvim-treesitter
     editorconfig-vim
     fzf-vim
     fzfWrapper
@@ -29,6 +30,7 @@ in
     vim-better-whitespace
     vim-multiple-cursors
     vim-surround
+    copilot-vim
 
     # :AG
     ag-nvim # rking/ag.vim
@@ -44,10 +46,6 @@ in
     papercolor-theme
     nvim-web-devicons
 
-    { plugin = vim-polyglot; config = ''let g:polyglot_disabled = ['md', 'markdown']''; }
-    vim-go
-    vim-nix
-
     vim-commentary # commentary.vim: comment stuff out
     vim-eunuch # :Remove, :Rename, etc
 
@@ -57,7 +55,23 @@ in
 #    nvim-lspconfig
     (fromGitHub "aa5f4f4ee10b2688fb37fa46215672441d5cd5d9" "master" "neovim/nvim-lspconfig")
 
-    (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "v0.1.17" "tekumara/typos-lsp")
+    # Completion
+    nvim-cmp
+    cmp-copilot
+    cmp-dictionary
+    cmp-emoji
+    cmp-nvim-lsp
+    cmp-nvim-ultisnips
+    cmp-path
+    cmp-treesitter
+
+    # Languages
+    markdown-preview-nvim
+    typescript-tools-nvim
+    vim-go
+    vim-nix
+    (fromGitHub "e7acbbbfde3f09a378873a16a380f8fdb01a4d12" "main" "tekumara/typos-lsp")
+#    (fromGitHub "728374ef59b11a5f5991ea2560d149a4ae33fd22" "master" "yasuhiroki/github-actions-yaml.vim")
   ];
 
   # coc = {

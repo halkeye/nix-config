@@ -45,6 +45,9 @@
     ctags
     typos
 
+    wslu
+    wsl-open
+
     # core languages
     rustup
     go
@@ -122,7 +125,7 @@
     snyk
 
 
-    ### 
+    ###
     # Kubernetes Tools
     ###
 
@@ -169,6 +172,10 @@ in {
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
+  home.file = lib.mkMerge [
+    (lib.mkIf (builtins.pathExists "/mnt/c/Users/micro/Downloads/") { Downloads = { source = config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/micro/Downloads/"; }; } )
+  ];
+
   home.packages =
     stable-packages
     ++ unstable-packages
@@ -196,8 +203,13 @@ in {
       package = pkgs.unstable.jq;
     };
 
+    oh-my-posh = {
+      enable = true;
+      useTheme = "gmay";
+    };
+
     # FIXME: disable this if you don't want to use the starship prompt
-    starship.enable = true;
+    starship.enable = false;
     starship.settings = {
       aws.disabled = true;
       gcloud.disabled = true;
@@ -327,8 +339,8 @@ in {
         pbcopy = "/mnt/c/Windows/System32/clip.exe";
         pbpaste = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -command 'Get-Clipboard'";
         explorer = "/mnt/c/Windows/explorer.exe";
-	curl = "noglob curl --compressed --proto-default https";
-	xdg-open = "wsl-open";
+        curl = "noglob curl --compressed --proto-default https";
+        xdg-open = "wsl-open";
       };
 
       envExtra = ''
