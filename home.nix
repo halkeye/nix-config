@@ -148,6 +148,10 @@
 
     # Text-mode interface for git
     tig
+
+
+    ## Matrix
+    iamb # matrix cli client
   ];
 in {
   imports = [
