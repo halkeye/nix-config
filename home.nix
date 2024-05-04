@@ -31,8 +31,19 @@
     wget
     zip
 
+    # language servers
+    ccls # c / c++
+    gopls
+    nodePackages.typescript-language-server
+    pkgs.nodePackages.vscode-langservers-extracted # html, css, json, eslint
+    nodePackages.yaml-language-server
+    sumneko-lua-language-server
+    nil # nix
+    nodePackages.pyright
     typos-lsp
-    ruby-lsp
+    marksman # Markdown
+    terraform-lsp
+    rubyPackages_3_2.ruby-lsp
 
     devenv
   ];
@@ -58,7 +69,6 @@
     lua
     nodejs
     python3
-    typescript
 
     # rust stuff
     cargo-cache
@@ -75,15 +85,6 @@
     regctl # Docker and OCI Registry Client in Go and tooling using those libraries
     reg # Docker registry v2 command line client and repo listing generator with security checks
 
-    # language servers
-    ccls # c / c++
-    gopls
-    nodePackages.typescript-language-server
-    pkgs.nodePackages.vscode-langservers-extracted # html, css, json, eslint
-    nodePackages.yaml-language-server
-    sumneko-lua-language-server
-    nil # nix
-    nodePackages.pyright
 
     # formatters and linters
     alejandra # nix
@@ -186,6 +187,7 @@ in {
     ++
     # FIXME: you can add anything else that doesn't fit into the above two lists in here
     [
+      (pkgs.writeShellScriptBin "tmux-session" (builtins.readFile ./zsh/tmux-session.sh))
       # pkgs.some-package
       # pkgs.unstable.some-other-package
     ];
