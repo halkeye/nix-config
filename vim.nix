@@ -59,11 +59,13 @@ in
     # Completion
     nvim-cmp
     cmp-copilot
+    cmp-cmdline
     cmp-dictionary
     cmp-emoji
     cmp-nvim-lsp
     cmp-nvim-ultisnips
     cmp-path
+    cmp-buffer
     cmp-treesitter
 
     # Languages
