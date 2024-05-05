@@ -172,6 +172,8 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
+    sessionVariables.TZ = "America/Vancouver";
+
     sessionVariables.EDITOR = "nvim";
     # FIXME: set your preferred $SHELL
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
@@ -255,6 +257,7 @@ in {
         Include ~/.ssh/config.d/*
 
         Host *
+          User halkeye
           ForwardAgent yes
           GSSAPIAuthentication no
           RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent.extra
