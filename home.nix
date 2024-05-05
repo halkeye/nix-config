@@ -190,6 +190,7 @@ in {
     # FIXME: you can add anything else that doesn't fit into the above two lists in here
     [
       (pkgs.writeShellScriptBin "tmux-session" (builtins.readFile ./zsh/tmux-session.sh))
+      (import ./pkgs/shcopy.nix {inherit lib pkgs;})
       # pkgs.some-package
       # pkgs.unstable.some-other-package
     ];
