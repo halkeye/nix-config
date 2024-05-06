@@ -15,7 +15,10 @@ let
 in
 {
   enable = true;
+  # use ctrl+a like original screen
   prefix = "C-a";
+  # start with pane 1
+  baseIndex = 1;
   shell = "${pkgs.zsh}/bin/zsh";
   terminal = "tmux-256color";
   historyLimit = 100000;
