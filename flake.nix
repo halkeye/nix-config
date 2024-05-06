@@ -94,26 +94,26 @@
         ];
       };
 
-      nixosConfigurations.loki = mkNixosConfiguration {
-        hostname = "loki";
-        username = "halkeye";
-        modules = [
-          nixos-wsl.nixosModules.default
-          nix-ld.nixosModules.nix-ld
-          vscode-server.nixosModules.default
-          ./wsl.nix
-        ];
-      };
+      # nixosConfigurations.loki = mkNixosConfiguration {
+      #   hostname = "loki";
+      #   username = "halkeye";
+      #   modules = [
+      #     nixos-wsl.nixosModules.default
+      #     nix-ld.nixosModules.nix-ld
+      #     vscode-server.nixosModules.default
+      #     ./wsl.nix
+      #   ];
+      # };
 
-      nixosConfigurations.antman = mkNixosConfiguration {
-        hostname = "antman";
-        username = "halkeye";
-        modules = [
-          nixos-wsl.nixosModules.default
-          nix-ld.nixosModules.nix-ld
-          vscode-server.nixosModules.default
-          ./wsl.nix
-        ];
-      };
+      # nixosConfigurations.antman = mkNixosConfiguration {
+      #   hostname = "antman";
+      #   username = "halkeye";
+      #   modules = [
+      #     nixos-wsl.nixosModules.default
+      #     nix-ld.nixosModules.nix-ld
+      #     vscode-server.nixosModules.default
+      #     ./wsl.nix
+      #   ];
+      # };
     };
 }
