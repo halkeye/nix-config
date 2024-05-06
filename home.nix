@@ -173,6 +173,7 @@ in {
     homeDirectory = "/home/${username}";
 
     sessionVariables.TZ = "America/Vancouver";
+    sessionVariables.FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow --exclude .git";
 
     sessionVariables.EDITOR = "nvim";
     # FIXME: set your preferred $SHELL
@@ -248,6 +249,10 @@ in {
     direnv.nix-direnv.enable = true;
 
     neovim = import ./vim.nix {
+      inherit pkgs lib;
+    };
+
+    tmux = import ./tmux.nix {
       inherit pkgs lib;
     };
 
