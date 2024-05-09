@@ -59,6 +59,8 @@
     gron # Make JSON greppable!
     ctags
     typos
+    lsof # for tmux super fingers
+    git-absorb
 
     wslu
     wsl-open

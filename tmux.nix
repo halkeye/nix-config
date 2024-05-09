@@ -23,6 +23,7 @@ in
   terminal = "tmux-256color";
   historyLimit = 100000;
   package = pkgs.unstable.tmux;
+  sensibleOnTop = false;
   plugins = with pkgs; [
     {
       plugin = tmux-super-fingers;
