@@ -27,7 +27,7 @@ jobs:
           # when set to "true" but frees about 6 GB
           tool-cache: true
 
-      - uses: cachix/install-nix-action@8887e596b4ee1134dae06b98d573bd674693f47c
+      - uses: cachix/install-nix-action@725982224ce3b974b7abc7df9ca873679eda8939
         with:
           extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
 
